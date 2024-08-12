@@ -16,7 +16,7 @@ GET_RESPONSE=$(curl -s \
   -u "$USER":"$KEY"\
   -X GET \
   -H 'Accept: application/json' \
-  '$URL')
+  "$URL")
 
 
 TEST_PAGE_ID=$(echo "$GET_RESPONSE" | jq '.id')
