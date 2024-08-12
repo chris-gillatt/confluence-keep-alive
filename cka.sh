@@ -4,6 +4,7 @@ test "$(command -v jq)" || ( echo "jq is not installed." && exit 1)
 
 USER="${CONFLUENCE_USER_EMAIL}"
 KEY="${CONFLUENCE_KEEP_ALIVE_TOKEN}"
+URL="${CONFLUENCE_TEST_PAGE}"
 
 if [ -z "$CONFLUENCE_USER_EMAIL" ] || \
    [ -z "$CONFLUENCE_KEEP_ALIVE_TOKEN" ]; then 
@@ -15,7 +16,7 @@ GET_RESPONSE=$(curl -s \
   -u "$USER":"$KEY"\
   -X GET \
   -H 'Accept: application/json' \
-  'https://tucan.atlassian.net/wiki/rest/api/content/383090689?expand=body.storage')
+  '$URL')
 
 
 TEST_PAGE_ID=$(echo "$GET_RESPONSE" | jq '.id')
